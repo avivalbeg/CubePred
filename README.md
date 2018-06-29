@@ -232,23 +232,13 @@ MemClass uses datacube which is still liable to change.
 ##### protected read_folder
     Input:
 
-#####  protected read_shapes
-
-##### public binary_rasterize
+##### binary_rasterize
 
 ##### clip
 
 ##### clip_from_shape
 
-##### coTran
-
-##### composite
-
 ##### get_map
-
-##### imresize
-
-##### is_l7_dataset_clean
 
 ##### rasterize
 
