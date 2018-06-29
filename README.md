@@ -228,32 +228,92 @@ MemClass uses datacube which is still liable to change.
             - when mode = 'shape_folder' it should point to a directory with the shape files of interest.
         
     Output: An instance of the Columbia_Forest_Predictor this is actually a bad name as the predictor is general. Once you have the classifer in an instance you can use the following methods from it. 
-      
-##### protected read_folder
+    
+#### read_folder    
+    Reads a folder for all the shape files.
     Input:
+        None
+    Output:
+        one(geopandas dataframe): A list of all the shapes
+        
+    Example: TODO
+    
+#### read_shapes
 
-##### binary_rasterize
+#### is_l7_dataset_clean
+     Only shows areas in an image that are clear from clouds or otherwise are visibile to the gorund.
+    
+    Input:
+    dataset(xarray): A datacube dataset
+    
+    Output: 
+    a_clean_mask(numpy array): A numpy array of booleans showing where the image data is good.
 
-##### clip
+#### composite
+    To remove clouds and obstructions in a series of images of the same extent.
+    Input:
+     ds(xarray): A datacube dataset with pixel_qa as one of it's measurements
+    
+    Output:
+     An image with median values for the pixels and all possible obstructions removed.
 
-##### clip_from_shape
+#### pull_Median
+    Takes a series of images in different times and removes clouds and takes the median values for each pixel. 
+    Input:
+     dataset(xarray): The xarray datacube of interest
+    Output:
+     A cleaned up image.
 
-##### get_map
+#### make_Labels
+    Makes the labels based on the style. 
+    Input:
+     img(np.array): a numpy array representing an image.
+     n_clusters(int): Number of clusters(for k-means)
+     style(string): 'Kmeans' or 'different'(uses the initialized classifier) 
+    Output:
+     img2(np.array): The color image
+     labels(np.array): Corresponding labels
 
-##### rasterize
+#### get_img
+     given the dataset it spits out the color normalized image
+     Input:
+      dataset(xarray): the datacube dataset
+      index(int): in which time index
+     Output:
+      img(np.array): The normalized rgb image
 
-##### rasterize_and_separate
+#### plot_and_retrieve
+     loads the dataset and optionally plots it. It defaults to a known extent and product in colombia.
+     Input:
+      x(tuple): The latitude range
+      y(tuple): The longitude range
+      crs(string): Coordinate Reference System
+      plot(boolean): Whether or not to plot in the process of pulling the data
+      time(tuple): A tuple of date strings for the time extents
+      style(string): 'Kmeans' or different
+     Output:
+      if plot == True:
+        finim
+      
+      
 
-##### read_folder
+#### make_Labels_From_Dataset
 
-##### run_example
+#### train_forest
 
+#### save_classifier
+    Input: 
+    filename(string): saves the classifier
+    Output:
+     None
 
+#### predict
+    Input:
+      img(np.array): An image to be classified
+      plot(boolean): To plot or not to plot
+    Output:
+      labels(np.array): The predicted labels.
+      
+#### categorize
+         
 ### Future Work
-
-
-
-
-
-
-
